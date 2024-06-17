@@ -17,7 +17,10 @@ exports.onCreateValue = functions
     .onCreate((snapshot, context) => {
       const newTransaction = snapshot.val();
       const transactionRef = ref.child(newTransaction.data.id);
-      if (newTransaction.type == "transaction.created") {
+      if (
+        newTransaction.type == "transaction.created" &&
+        newTransaction.data.settled != ""
+      ) {
         transactionRef.once("value").then((snapshot)=>{
           if (!snapshot.exists()) {
             transactionRef.set(newTransaction);

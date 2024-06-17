@@ -52,20 +52,5 @@ Example of transaction json:
 
 For the endpoint firebase realtime databasing allows me to directly make data creation requests directly to the database using a restful endpoint without having to setup a backend saving development time.
 So using firebase functions I would be able to create a trigger when a data entry is created, to update a number which would be used to keep track of the account balance, This balance will have to be intially inputted manually into the database.
-One issue I had to take into consideration is when a transaction is made, 4 entries ar added to the database instead of just 1, So using the uniquie ID tied to each transaction I can prevent the same transaction being processed multiple times.
-
+One issue I had to take into consideration is when a transaction is made, 4 entries ar added to the database instead of just 1, So using a ID I can prevent the same transaction being processed multiple times.
 <img src="function_flow.png" alt="drawing" width="1000"/>
-
-### The overlay
-
-Once the cloud function was implemented and I was able to track my balance in real-time within the realtime database. Next I just had to setup a pure html and js page that I would be able to use directly within my OBS as an overlay locally.
-
-For my implementation I used the script import module of firebase and firebase database,
-
-```<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>```
-```<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>```
-
-Using this module I was able to use the ```.on()``` function which allows me to implement event base functionality for when a select value changes within the database, So that when the balance updates within the database it also updates in on my overlay in realtime.
-
-
-<img src="msedge_SFiyAK3Qwj.gif" width="1000">
